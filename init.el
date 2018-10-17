@@ -30,6 +30,7 @@
 
 
 (put 'narrow-to-region 'disabled nil)
+(global-prettify-symbols-mode t)
 
 
 (use-package auto-package-update
