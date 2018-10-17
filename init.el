@@ -1,26 +1,26 @@
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" .        "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" .          "https://elpa.gnu.org/packages/"))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(async-bytecomp-package-mode t)
- '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
- '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
- '(ruby-align-chained-calls t)
- '(ruby-insert-encoding-magic-comment nil)
- '(smie-indent-basic 2)
- '(standard-indent 2)
- '(tab-width 2)
- '(truncate-lines t)
- '(web-mode-attr-indent-offset nil)
- '(web-mode-block-padding 2)
- '(web-mode-enable-auto-closing nil)
- '(web-mode-enable-auto-indentation nil)
- '(web-mode-markup-indent-offset 2))
+ '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
+ '(read-buffer-completion-ignore-case t)
+ '(read-file-name-completion-ignore-case t)
+ '(tab-width 4)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,11 +28,34 @@
  ;; If there is more than one, they won't work right.
  )
 
+
 (put 'narrow-to-region 'disabled nil)
 
-(global-set-key (kbd "C-x g") 'magit-status)
 
-(add-to-list 'auto-mode-alist '("\\.prawn$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-hide-results t)
+  (auto-package-update-maybe))
 
-(add-hook 'after-init-hook 'projectile-rails-global-mode)
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status)
+  :demand t)
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+  (yas-global-mode 1))
+
+(use-package geiser
+  :ensure t
+  :config
+  (setq geiser-default-implementation 'chicken))
+
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(load-library "alarm.com")
+(load-library "sidebar")
