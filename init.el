@@ -10,6 +10,7 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'bind-key)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -57,6 +58,21 @@
   :config
   (setq geiser-default-implementation 'chicken))
 
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode 1))
+
+(use-package eyebrowse
+  :ensure t
+  :config
+  (global-set-key (kbd "<M-kp-1>") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "<M-kp-3>") 'eyebrowse-switch-to-window-config-2)
+  (global-set-key (kbd "<M-kp-7>") 'eyebrowse-switch-to-window-config-3)
+  (global-set-key (kbd "<M-kp-9>") 'eyebrowse-switch-to-window-config-4)
+  (setq eyebrowse-new-workspace t))
+
+(eyebrowse-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")

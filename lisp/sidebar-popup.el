@@ -1,9 +1,6 @@
 (defun make-popup (side size &optional init-hook)
   "Create a popup"
-  (let ((new-popup (vector nil size nil side)))
-    (if init-hook
-		(funcall init-hook new-popup))
-    new-popup))
+  (vector nil size nil side init-hook))
 
 (defun popup-window (popup)
   "Get the window for a popup"
@@ -33,6 +30,14 @@
   "Get the size for a popup"
   (elt popup 3))
 
+(defun popup-set-init-fn (popup new-value)
+  "Set the initialization function for a popup"
+  (aset popup 4 new-value))
+
+(defun popup-init-fn (popup-value)
+  "Get the initialization function for a popup"
+  (elt popup 4))
+
 (defun popup-window-size (popup)
   "Get the active window size for a popup"
   (let ((side (popup-side popup))
@@ -57,6 +62,9 @@
 
 (defun show-popup (popup)
   "Show a popup"
+  (if (popup-init-fn popup)
+	  (funcall (popup-init-fn popup) popup))
+
   (popup-set-window popup
 					(split-window (frame-root-window)
 								  (- (popup-size popup))

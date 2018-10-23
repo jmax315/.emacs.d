@@ -21,7 +21,15 @@
 		    (save-window-excursion (shell))))
 
 (defun make-sidebar-compile-popup (new-popup)
-  (popup-set-buffer new-popup "*compilation*"))
+  (let ((compilation-buffer (get-buffer "*compilation*")))
+	(unless compilation-buffer
+	  (progn
+		(save-window-excursion
+		  (save-mark-and-excursion
+			(cd (projectile-project-root))
+			(compile "make -k" t)
+			(setq compilation-buffer (get-buffer "*compilation*"))))))
+	(popup-set-buffer new-popup compilation-buffer)))
 
 
 (defvar left-popup   (make-popup 'left  64 (function make-sidebar-dired-popup)))
