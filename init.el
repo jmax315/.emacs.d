@@ -21,6 +21,7 @@
  '(global-linum-mode t)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil))
 (custom-set-faces
