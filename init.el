@@ -74,6 +74,19 @@
   (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
 
+(use-package helm-rails
+  :ensure t)
+
+(use-package helm-rb
+  :ensure t)
+
+(use-package projectile-rails
+  :ensure t)
+
+(use-package rails-log-mode
+  :ensure t)
+
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")
 (load-library "sidebar")
