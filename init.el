@@ -19,11 +19,19 @@
  ;; If there is more than one, they won't work right.
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(global-linum-mode t)
+ '(inhibit-startup-buffer-menu t)
+ '(inhibit-startup-screen t)
+ '(initial-buffer-choice t)
+ '(package-archives
+   (quote
+	(("melpa" . "https://melpa.org/packages/")
+	 ("gnus" . "http://elpa.gnu.org/packages/"))))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(show-paren-mode t)
  '(tab-width 4)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-svn-global-switches nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
