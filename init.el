@@ -94,6 +94,8 @@
 (use-package rails-log-mode
   :ensure t)
 
+(use-package yaml-mode
+  :ensure t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")
