@@ -97,6 +97,16 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package robe
+  :ensure t
+  :config (add-hook 'rubymode-hook 'robe-mode))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode t)
+  (push 'company-robe company-backends))
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")
 (load-library "sidebar")
