@@ -79,16 +79,10 @@
 (use-package flymake-yaml
   :ensure t)
 
-(use-package flyparens
-  :ensure t)
-
 (use-package geiser
   :ensure t
   :config
   (setq geiser-default-implementation 'chicken))
-
-(use-package helm-rails
-  :ensure t)
 
 (use-package helm-rb
   :ensure t)
@@ -101,10 +95,10 @@
 (use-package markdown-mode
   :ensure t)
 
-p(use-package markdown-mode+
+(use-package markdown-mode+
   :ensure t)
 
-p(use-package markdown-preview-eww
+(use-package markdown-preview-eww
   :ensure t)
 
 (use-package markup
@@ -127,6 +121,9 @@ p(use-package markdown-preview-eww
 (use-package robe
   :ensure t
   :config (add-hook 'rubymode-hook 'robe-mode))
+
+(use-package rvm
+  :ensure t)
 
 (use-package yaml-mode
   :ensure t)
