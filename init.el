@@ -51,26 +51,11 @@
   (setq auto-package-hide-results t)
   (auto-package-update-maybe))
 
-(use-package magit
-  :ensure t
-  :bind ("C-x g" . magit-status)
-  :demand t)
-
-(use-package yasnippet
+(use-package company
   :ensure t
   :config
-  (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-  (yas-global-mode 1))
-
-(use-package geiser
-  :ensure t
-  :config
-  (setq geiser-default-implementation 'chicken))
-
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode 1))
+  (global-company-mode t)
+  (push 'company-robe company-backends))
 
 (use-package eyebrowse
   :ensure t
@@ -82,11 +67,56 @@
   (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
 
+(use-package flycheck
+  :ensure t)
+
+(use-package flycheck-mmark
+  :ensure t)
+
+(use-package flymake-ruby
+  :ensure t)
+
+(use-package flymake-yaml
+  :ensure t)
+
+(use-package flyparens
+  :ensure t)
+
+(use-package geiser
+  :ensure t
+  :config
+  (setq geiser-default-implementation 'chicken))
+
 (use-package helm-rails
   :ensure t)
 
 (use-package helm-rb
   :ensure t)
+
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status)
+  :demand t)
+
+(use-package markdown-mode
+  :ensure t)
+
+p(use-package markdown-mode+
+  :ensure t)
+
+p(use-package markdown-preview-eww
+  :ensure t)
+
+(use-package markup
+  :ensure t)
+
+(use-package markup-faces
+  :ensure t)
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode 1))
 
 (use-package projectile-rails
   :ensure t)
@@ -94,18 +124,19 @@
 (use-package rails-log-mode
   :ensure t)
 
-(use-package yaml-mode
-  :ensure t)
-
 (use-package robe
   :ensure t
   :config (add-hook 'rubymode-hook 'robe-mode))
 
-(use-package company
+(use-package yaml-mode
+  :ensure t)
+
+(use-package yasnippet
   :ensure t
   :config
-  (global-company-mode t)
-  (push 'company-robe company-backends))
+  (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+  (yas-global-mode 1))
+
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")
