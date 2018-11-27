@@ -22,10 +22,6 @@
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
- '(package-archives
-   (quote
-	(("melpa" . "https://melpa.org/packages/")
-	 ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(same-window-buffer-names (quote ("*shell*")))
