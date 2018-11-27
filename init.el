@@ -45,8 +45,8 @@
   :ensure t
   :config
   (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-hide-results t)
-  (auto-package-update-maybe))
+  (setq auto-package-update-prompt-before-update t)
+  (setq auto-package-update-hide-results nil))
 
 (use-package company
   :ensure t
@@ -133,6 +133,8 @@
   (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
   (yas-global-mode 1))
 
+
+(auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
 (global-prettify-symbols-mode t)
 (add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
