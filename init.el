@@ -25,9 +25,10 @@
  '(package-archives
    (quote
 	(("melpa" . "https://melpa.org/packages/")
-	 ("gnus" . "http://elpa.gnu.org/packages/"))))
+	 ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(same-window-buffer-names (quote ("*shell*")))
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -38,10 +39,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-
-(put 'narrow-to-region 'disabled nil)
-(global-prettify-symbols-mode t)
 
 
 (use-package auto-package-update
@@ -110,7 +107,9 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-mode 1))
+  (projectile-mode 1)
+  ;; Workaround for bug in current projectile
+  (setq projectile-project-compilation-cmd ""))
 
 (use-package projectile-rails
   :ensure t)
@@ -134,6 +133,9 @@
   (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
   (yas-global-mode 1))
 
+(put 'narrow-to-region 'disabled nil)
+(global-prettify-symbols-mode t)
+(add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load-library "alarm.com")
