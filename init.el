@@ -45,6 +45,9 @@
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results nil))
 
+(use-package coffee-mode
+  :ensure t)
+
 (use-package company
   :ensure t
   :config
