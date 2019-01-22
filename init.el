@@ -17,11 +17,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(async-bytecomp-package-mode t)
+ '(auto-package-update-interval 1)
+ '(auto-package-update-prompt-before-update t)
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(global-linum-mode t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
+ '(package-archives
+   (quote
+	(("gnu" . "https://elpa.gnu.org/packages/")
+	 ("melpa" . "https://melpa.org/packages/"))))
+ '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(same-window-buffer-names (quote ("*shell*")))
@@ -50,6 +58,9 @@
   :config
   (global-company-mode t)
   (push 'company-robe company-backends))
+
+(use-package dsvn
+  :ensure t)
 
 (use-package eyebrowse
   :ensure t
