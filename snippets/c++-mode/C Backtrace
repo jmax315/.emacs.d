@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: C Backtrace
+# key: C_Backtrace
+# --
+#include <execinfo.h>
+	// DEBUG
+	void *raw_backtrace[5];
+	int backtrace_size= backtrace(raw_backtrace, sizeof(raw_backtrace)/sizeof(raw_backtrace[0]));
+	char **cooked_backtrace= backtrace_symbols(raw_backtrace, backtrace_size);
+	for (char **backtrace_p= cooked_backtrace; backtrace_p - cooked_backtrace < backtrace_size; backtrace_p++)
+		fprintf(stderr, "    %s\n", *backtrace_p);
+	free(cooked_backtrace);
