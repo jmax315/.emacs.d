@@ -62,9 +62,6 @@
   (global-company-mode t)
   (push 'company-robe company-backends))
 
-(use-package dsvn
-  :ensure t)
-
 (use-package eyebrowse
   :ensure t
   :config
