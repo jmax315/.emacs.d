@@ -127,7 +127,8 @@
 
 (use-package robe
   :ensure t
-  :config (add-hook 'rubymode-hook 'robe-mode))
+  :config (add-hook 'rubymode-hook 'robe-mode)
+          (start-robe))
 
 (use-package rvm
   :ensure t)
