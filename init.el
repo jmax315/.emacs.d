@@ -79,8 +79,9 @@
   :ensure t)
 
 (use-package flymake-ruby
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
 
 (use-package flymake-yaml
   :ensure t)
