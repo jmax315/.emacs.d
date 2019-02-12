@@ -79,6 +79,7 @@
   :ensure t)
 
 (use-package flymake-ruby
+  (add-hook 'ruby-mode-hook 'flymake-ruby-load)
   :ensure t)
 
 (use-package flymake-yaml
@@ -127,8 +128,9 @@
 
 (use-package robe
   :ensure t
-  :config (add-hook 'rubymode-hook 'robe-mode)
-          (start-robe))
+  :config (add-hook 'ruby-mode-hook 'robe-mode)
+		  (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+			(rvm-activate-corresponding-ruby)))
 
 (use-package rvm
   :ensure t)
