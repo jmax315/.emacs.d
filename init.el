@@ -132,7 +132,13 @@
 		  (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
 			(rvm-activate-corresponding-ruby)))
 
+(use-package ruby-hash-syntax
+  :ensure t)
+
 (use-package rvm
+  :ensure t)
+
+(use-package string-inflection
   :ensure t)
 
 (use-package yaml-mode
