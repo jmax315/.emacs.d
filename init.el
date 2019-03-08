@@ -154,6 +154,9 @@
 (use-package yasnippet-snippets
   :ensure t)
 
+(use-package ztree
+  :ensure t)
+
 (auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
 (global-prettify-symbols-mode t)
