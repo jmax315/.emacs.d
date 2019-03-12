@@ -21,6 +21,11 @@
  '(auto-package-update-interval 1)
  '(auto-package-update-prompt-before-update t)
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
+ '(geiser-implementations-alist
+   (quote
+	(((regexp "\\.scm$")   chicken)
+	 ((regexp "\\.meta$")  chicken)
+	 ((regexp "\\.setup$") chicken))))
  '(global-linum-mode t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
@@ -52,6 +57,9 @@
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results nil))
+
+(use-package circe
+  :ensure t)
 
 (use-package coffee-mode
   :ensure t)
@@ -89,7 +97,9 @@
 (use-package geiser
   :ensure t
   :config
-  (setq geiser-default-implementation 'chicken))
+  (setq geiser-default-implementation 'chicken)
+  (setq geiser-mode-smart-tab-p t)
+  (setq geiser-mode-start-repl-p t))
 
 (use-package helm-rb
   :ensure t)
@@ -155,7 +165,6 @@
   :ensure t)
 
 (use-package ztree
-  :ensure t)
 
 (auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
