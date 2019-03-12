@@ -68,7 +68,10 @@
   :ensure t
   :config
   (global-company-mode t)
-  (push 'company-robe company-backends))
+  (setq company-backends (delete 'company-semantic company-backends))
+  ;; (push 'company-robe company-backends)
+  (define-key c-mode-map   [(tab)] 'company-complete)
+  (define-key c++-mode-map [(tab)] 'company-complete))
 
 (use-package eyebrowse
   :ensure t
@@ -149,6 +152,9 @@
 (use-package rvm
   :ensure t)
 
+(use-package sr-speedbar
+  :ensure t)
+
 (use-package string-inflection
   :ensure t)
 
@@ -165,6 +171,7 @@
   :ensure t)
 
 (use-package ztree
+  :ensure t)
 
 (auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
