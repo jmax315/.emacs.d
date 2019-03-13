@@ -40,8 +40,9 @@
 	   (popup-set-buffer new-popup (get-buffer-create "*compilation*"))))))
 
 
-(defvar left-popup   (make-popup 'left  64 (function make-sidebar-dired-popup)))
-(defvar right-popup  (make-popup 'right 32 (function make-sidebar-magit-popup)))
+(defvar left-popup  (make-popup 'left 32 (function make-sidebar-magit-popup)))
+;; ToDo: Integrate with sr-speedbar
+;(defvar right-popup   (make-popup 'left  64 (function make-sidebar-dired-popup)))
 (defvar top-popup    (make-popup 'above 10 (function make-sidebar-compile-popup)))
 (defvar bottom-popup (make-popup 'below 10 (function make-sidebar-shell-popup)))
 
@@ -50,10 +51,11 @@
   (interactive)
   (toggle-popup left-popup))
 
-(defun toggle-right-popup ()
-  "Pop up a window on the right, or hide it"
-  (interactive)
-  (toggle-popup right-popup))
+;; ToDo: Integrate with sr-speedbar
+;; (defun toggle-right-popup ()
+;;   "Pop up a window on the right, or hide it"
+;;   (interactive)
+;;   (toggle-popup right-popup))
 
 (defun toggle-top-popup ()
   "Pop up a window on the top, or hide it"
@@ -76,6 +78,6 @@
 (global-set-key [kp-2] 'toggle-bottom-popup)
 (global-set-key [kp-4] 'toggle-left-popup)
 (global-set-key [kp-5] 'hide-all-popups)
-(global-set-key [kp-6] 'toggle-right-popup)
+;; (global-set-key [kp-6] 'toggle-right-popup)
 (global-set-key [kp-8] 'toggle-top-popup)
 

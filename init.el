@@ -69,9 +69,7 @@
   :config
   (global-company-mode t)
   (setq company-backends (delete 'company-semantic company-backends))
-  ;; (push 'company-robe company-backends)
-  (define-key c-mode-map   [(tab)] 'company-complete)
-  (define-key c++-mode-map [(tab)] 'company-complete))
+  (define-key c-mode-base-map [(tab)] 'company-complete))
 
 (use-package eyebrowse
   :ensure t
@@ -153,7 +151,9 @@
   :ensure t)
 
 (use-package sr-speedbar
-  :ensure t)
+  :ensure t
+  :config
+  (global-set-key [kp-6] 'sr-speedbar-toggle))
 
 (use-package string-inflection
   :ensure t)
