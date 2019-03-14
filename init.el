@@ -102,6 +102,14 @@
   (setq geiser-mode-smart-tab-p t)
   (setq geiser-mode-start-repl-p t))
 
+(use-package ggtags
+  :ensure t
+  :config
+  (add-hook 'c-mode-common-hook
+			(lambda ()
+			  (when (derived-mode-p 'c-mode 'c++-mode)
+				(ggtags-mode 1)))))
+
 (use-package helm-rb
   :ensure t)
 
