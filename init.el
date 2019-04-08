@@ -50,6 +50,9 @@
  )
 
 
+(use-package anaconda-mode
+  :ensure t)
+
 (use-package auto-package-update
   :ensure t
   :config
