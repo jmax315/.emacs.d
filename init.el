@@ -139,6 +139,13 @@
 (use-package markup-faces
   :ensure t)
 
+(use-package omnisharp
+  :ensure t
+  :configure
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  (add-hook 'csharp-mode-hook 'company-mode)
+  (add-to-list 'company-backends 'company-omnisharp))
+
 (use-package projectile
   :ensure t
   :config
