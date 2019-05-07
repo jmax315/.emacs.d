@@ -74,6 +74,9 @@
   (setq company-backends (delete 'company-semantic company-backends))
   (define-key c-mode-base-map [(tab)] 'company-complete))
 
+(use-package csharp-mode
+  :ensure t)
+
 (use-package eyebrowse
   :ensure t
   :config
