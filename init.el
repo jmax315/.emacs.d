@@ -190,5 +190,9 @@
 (add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+
+(autoload 'robot-mode "robot-mode")
+(add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
+
 (load-library "alarm.com")
 (load-library "sidebar")
