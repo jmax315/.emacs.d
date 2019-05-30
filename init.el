@@ -72,10 +72,12 @@
   :config
   (global-company-mode t)
   (setq company-backends (delete 'company-semantic company-backends))
-  (define-key c-mode-base-map [(tab)] 'company-complete))
+  (add-to-list 'company-backends #'company-omnisharp))
 
 (use-package csharp-mode
-  :ensure t)
+  :ensure t
+  :config
+  (flycheck-mode))
 
 (use-package eyebrowse
   :ensure t
@@ -141,7 +143,7 @@
 
 (use-package omnisharp
   :ensure t
-  :configure
+  :config
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   (add-hook 'csharp-mode-hook 'company-mode)
   (add-to-list 'company-backends 'company-omnisharp))
@@ -155,6 +157,12 @@
 
 (use-package projectile-rails
   :ensure t)
+
+(use-package python-mode
+  :ensure t)
+
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
 
 (use-package rails-log-mode
   :ensure t)
