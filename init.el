@@ -167,6 +167,9 @@
 (use-package rails-log-mode
   :ensure t)
 
+(use-package restclient
+  :ensure t)
+
 (use-package robe
   :ensure t
   :config (add-hook 'ruby-mode-hook 'robe-mode)
