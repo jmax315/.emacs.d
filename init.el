@@ -179,9 +179,6 @@
 (use-package python-mode
   :ensure t)
 
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
-
 (use-package rails-log-mode
   :ensure t)
 
