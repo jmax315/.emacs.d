@@ -210,12 +210,14 @@
 
 (use-package yasnippet
   :ensure t
+  :pin 'melpa
   :config
   (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
   (yas-global-mode 1))
 
 (use-package yasnippet-snippets
-  :ensure t)
+  :ensure t
+  :pin 'melpa)
 
 (use-package ztree
   :ensure t)
