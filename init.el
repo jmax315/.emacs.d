@@ -67,9 +67,7 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode t)
-  (setq company-backends (delete 'company-semantic company-backends))
-  (define-key c-mode-base-map [(tab)] 'company-complete))
+  (global-company-mode t))
 
 (use-package eyebrowse
   :ensure t
@@ -165,6 +163,14 @@
 
 (use-package string-inflection
   :ensure t)
+
+(use-package web-mode
+  :ensure t
+  :mode ("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")
+  :config (progn
+            (setq
+             web-mode-content-types-alist
+             '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))))
 
 (use-package yaml-mode
   :ensure t)
