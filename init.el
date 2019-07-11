@@ -206,12 +206,7 @@
   :ensure t)
 
 (use-package web-mode
-  :ensure t
-  :mode ("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")
-  :config (progn
-            (setq
-             web-mode-content-types-alist
-             '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))))
+  :ensure t)
 
 (use-package yaml-mode
   :ensure t)
