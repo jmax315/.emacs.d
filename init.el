@@ -38,6 +38,8 @@
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(same-window-buffer-names (quote ("*shell*")))
+ '(scheme-mit-dialect nil)
+ '(scheme-program-name "csi")
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -47,7 +49,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
 
 
 (use-package anaconda-mode
