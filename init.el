@@ -232,6 +232,11 @@
 (global-prettify-symbols-mode t)
 (add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
 
+(add-hook 'scheme-mode-hook
+		  (lambda ()
+			(dolist (kw '(describe it before after))
+			  (put kw 'scheme-indent-function 'defun))))
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (load-library "sidebar")
