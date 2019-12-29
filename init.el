@@ -37,6 +37,7 @@
  '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(ruby-insert-encoding-magic-comment nil)
  '(same-window-buffer-names (quote ("*shell*")))
  '(scheme-mit-dialect nil)
  '(scheme-program-name "csi")
