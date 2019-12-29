@@ -37,7 +37,10 @@
  '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(ruby-insert-encoding-magic-comment nil)
  '(same-window-buffer-names (quote ("*shell*")))
+ '(scheme-mit-dialect nil)
+ '(scheme-program-name "csi")
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -47,8 +50,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
 
+
+(use-package anaconda-mode
+  :ensure t)
 
 (use-package auto-package-update
   :ensure t
@@ -67,7 +73,32 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode t))
+  (global-company-mode t)
+  (setq company-backends (delete 'company-semantic company-backends))
+  (add-to-list 'company-backends #'company-omnisharp))
+
+(use-package csharp-mode
+  :ensure t
+  :config
+  (flycheck-mode))
+
+(use-package docker
+  :ensure t)
+
+(use-package docker-api
+  :ensure t)
+
+(use-package docker-cli
+  :ensure t)
+
+(use-package docker-compose-mode
+  :ensure t)
+
+(use-package docker-tramp
+  :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t)
 
 (use-package eyebrowse
   :ensure t
@@ -131,6 +162,13 @@
 (use-package markup-faces
   :ensure t)
 
+(use-package omnisharp
+  :ensure t
+  :config
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  (add-hook 'csharp-mode-hook 'company-mode)
+  (add-to-list 'company-backends 'company-omnisharp))
+
 (use-package projectile
   :ensure t
   :config
@@ -141,7 +179,13 @@
 (use-package projectile-rails
   :ensure t)
 
+(use-package python-mode
+  :ensure t)
+
 (use-package rails-log-mode
+  :ensure t)
+
+(use-package restclient
   :ensure t)
 
 (use-package robe
@@ -177,12 +221,14 @@
 
 (use-package yasnippet
   :ensure t
+  :pin 'melpa
   :config
   (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
   (yas-global-mode 1))
 
 (use-package yasnippet-snippets
-  :ensure t)
+  :ensure t
+  :pin 'melpa)
 
 (use-package ztree
   :ensure t)
@@ -192,6 +238,11 @@
 (global-prettify-symbols-mode t)
 (add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
 
+(add-hook 'scheme-mode-hook
+		  (lambda ()
+			(dolist (kw '(describe it before after))
+			  (put kw 'scheme-indent-function 'defun))))
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(load-library "alarm.com")
+
 (load-library "sidebar")
