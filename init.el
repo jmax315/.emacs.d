@@ -116,6 +116,9 @@
 (use-package flycheck-mmark
   :ensure t)
 
+(use-package flymake-haml
+  :ensure t)
+
 (use-package flymake-ruby
   :ensure t
   :config
@@ -138,6 +141,9 @@
 			(lambda ()
 			  (when (derived-mode-p 'c-mode 'c++-mode)
 				(ggtags-mode 1)))))
+
+(use-package haml-mode
+  :ensure t)
 
 (use-package helm-rb
   :ensure t)
