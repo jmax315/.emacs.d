@@ -119,6 +119,9 @@
 (use-package flymake-haml
   :ensure t)
 
+(use-package flymake-php
+  :ensure t)
+
 (use-package flymake-ruby
   :ensure t
   :config
@@ -174,6 +177,9 @@
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   (add-hook 'csharp-mode-hook 'company-mode)
   (add-to-list 'company-backends 'company-omnisharp))
+
+(use-package php-mode
+  :ensure t)
 
 (use-package projectile
   :ensure t
