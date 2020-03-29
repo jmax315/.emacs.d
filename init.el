@@ -23,17 +23,17 @@
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(geiser-implementations-alist
    (quote
-	(((regexp "\\.scm$")   chicken)
-	 ((regexp "\\.meta$")  chicken)
-	 ((regexp "\\.setup$") chicken))))
+    (((regexp "\\.scm$")   chicken)
+     ((regexp "\\.meta$")  chicken)
+     ((regexp "\\.setup$") chicken))))
  '(global-linum-mode t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
  '(package-archives
    (quote
-	(("gnu" . "https://elpa.gnu.org/packages/")
-	 ("melpa" . "https://melpa.org/packages/"))))
+    (("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/"))))
  '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
@@ -138,9 +138,9 @@
   :ensure t
   :config
   (add-hook 'c-mode-common-hook
-			(lambda ()
-			  (when (derived-mode-p 'c-mode 'c++-mode)
-				(ggtags-mode 1)))))
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode)
+                (ggtags-mode 1)))))
 
 (use-package haml-mode
   :ensure t)
@@ -197,8 +197,8 @@
 (use-package robe
   :ensure t
   :config (add-hook 'ruby-mode-hook 'robe-mode)
-		  (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
-			(rvm-activate-corresponding-ruby)))
+          (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+            (rvm-activate-corresponding-ruby)))
 
 (use-package ruby-hash-syntax
   :ensure t)
@@ -242,12 +242,20 @@
 (auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
 (global-prettify-symbols-mode t)
-(add-hook 'compilation-mode-hook (lambda () (setq truncate-lines t)))
+(add-hook 'compilation-mode-hook
+          (lambda ()
+            (setq truncate-lines t)))
 
 (add-hook 'scheme-mode-hook
-		  (lambda ()
-			(dolist (kw '(describe it before after))
-			  (put kw 'scheme-indent-function 'defun))))
+          (lambda ()
+            (dolist (kw '(describe it before after))
+              (put kw 'scheme-indent-function 'defun))))
+
+(add-hook 'before-save-hook
+          (lambda ()
+            (unless (derived-mode-p 'makefile-mode)
+              (untabify (point-min) (point-max)))
+            (delete-trailing-whitespace (point-min) (point-max))))
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
