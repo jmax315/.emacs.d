@@ -50,7 +50,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
+ '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal))))
+ '(font-lock-function-name-face ((t (:foreground "brightmagenta"))))
+ '(font-lock-keyword-face ((t (:foreground "brightgreen"))))
+ '(font-lock-string-face ((t (:foreground "white"))))
+ '(magit-section-highlight ((t (:background "brightwhite" :foreground "black"))))
+ '(minibuffer-prompt ((t (:foreground "brightwhite")))))
 
 
 (use-package anaconda-mode
@@ -244,7 +249,14 @@
 (add-hook 'scheme-mode-hook
           (lambda ()
             (dolist (kw '(describe it before after))
-              (put kw 'scheme-indent-function 'defun))))
+              (put kw 'scheme-indent-function 'defun))
+            (font-lock-add-keywords
+             nil
+             '(("(\\(describe\\) " . font-lock-keyword-face)
+               ("(\\(it\\) "       . font-lock-keyword-face)
+               ("(\\(before\\) "   . font-lock-keyword-face)
+               ("(\\(after\\) "    . font-lock-keyword-face)))))
+
 
 (add-hook 'before-save-hook
           (lambda ()
