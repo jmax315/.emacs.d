@@ -20,6 +20,7 @@
  '(async-bytecomp-package-mode t)
  '(auto-package-update-interval 1)
  '(auto-package-update-prompt-before-update t)
+ '(compilation-scroll-output t)
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(geiser-implementations-alist
    (quote
