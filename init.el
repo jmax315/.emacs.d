@@ -45,18 +45,13 @@
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(vc-svn-global-switches nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal))))
- '(font-lock-function-name-face ((t (:foreground "brightmagenta"))))
- '(font-lock-keyword-face ((t (:foreground "brightgreen"))))
- '(font-lock-string-face ((t (:foreground "white"))))
- '(magit-section-highlight ((t (:background "brightwhite" :foreground "black"))))
- '(minibuffer-prompt ((t (:foreground "brightwhite")))))
-
+ '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
 
 (use-package anaconda-mode
   :ensure t)
@@ -265,5 +260,7 @@
             (delete-trailing-whitespace (point-min) (point-max))))
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+
+(unless (display-graphic-p) (load "./text-mode-customizations.el"))
 
 (load-library "sidebar")
