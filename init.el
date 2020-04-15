@@ -26,7 +26,8 @@
    (quote
     (((regexp "\\.scm$")   chicken)
      ((regexp "\\.meta$")  chicken)
-     ((regexp "\\.setup$") chicken))))
+     ((regexp "\\.setup$") chicken)
+     ((regexp "\\.page$")  chicken))))
  '(global-linum-mode t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
@@ -242,6 +243,7 @@
           (lambda ()
             (setq truncate-lines t)))
 
+(add-to-list 'auto-mode-alist '("\\.page\\'" . scheme-mode))
 (add-hook 'scheme-mode-hook
           (lambda ()
             (dolist (kw '(describe it before after))
