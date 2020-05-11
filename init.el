@@ -80,9 +80,7 @@
   (add-to-list 'company-backends #'company-omnisharp))
 
 (use-package csharp-mode
-  :ensure t
-  :config
-  (flycheck-mode))
+  :ensure t)
 
 (use-package docker
   :ensure t)
@@ -113,24 +111,20 @@
   (eyebrowse-mode t))
 
 (use-package flycheck
-  :ensure t)
-
-(use-package flycheck-mmark
-  :ensure t)
-
-(use-package flymake-haml
-  :ensure t)
-
-(use-package flymake-php
-  :ensure t)
-
-(use-package flymake-ruby
   :ensure t
   :config
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint
+            (and root
+                 (expand-file-name "node_modules/.bin/eslint"
+                                   root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
 
-(use-package flymake-yaml
-  :ensure t)
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
 (use-package geiser
   :ensure t
@@ -262,8 +256,8 @@
               (untabify (point-min) (point-max)))
             (delete-trailing-whitespace (point-min) (point-max))))
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (unless (display-graphic-p) (load "./text-mode-customizations.el"))
-
-(load-library "sidebar")
