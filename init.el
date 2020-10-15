@@ -103,10 +103,10 @@
 (use-package eyebrowse
   :ensure t
   :config
-  (global-set-key (kbd "<M-kp-1>") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "<M-kp-3>") 'eyebrowse-switch-to-window-config-2)
-  (global-set-key (kbd "<M-kp-7>") 'eyebrowse-switch-to-window-config-3)
-  (global-set-key (kbd "<M-kp-9>") 'eyebrowse-switch-to-window-config-4)
+  (global-set-key (kbd "<f9>")  'eyebrowse-switch-to-window-config-0)
+  (global-set-key (kbd "<f10>") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "<f11>") 'eyebrowse-switch-to-window-config-2)
+  (global-set-key (kbd "<f12>") 'eyebrowse-switch-to-window-config-3)
   (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
 
@@ -236,6 +236,8 @@
 (add-hook 'compilation-mode-hook
           (lambda ()
             (setq truncate-lines t)))
+
+(add-to-list 'auto-mode-alist '("\\.cspec\\'" . c-mode))
 
 (add-to-list 'auto-mode-alist '("\\.page\\'" . scheme-mode))
 (add-hook 'scheme-mode-hook
