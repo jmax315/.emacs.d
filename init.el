@@ -39,8 +39,6 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-enable-at-startup nil)
- '(package-selected-packages
-   '(enh-ruby-mode ztree web-mode use-package string-inflection sr-speedbar rvm ruby-hash-syntax robe restclient rails-log-mode python-mode projectile-rails php-mode omnisharp markup-faces markup markdown-preview-eww markdown-mode+ magit helm-rb haml-mode ggtags geiser eyebrowse dockerfile-mode docker-compose-mode docker-cli docker-api docker company coffee-mode circe auto-package-update anaconda-mode))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(ruby-insert-encoding-magic-comment nil)
@@ -102,6 +100,9 @@
   :ensure t)
 
 (use-package dockerfile-mode
+  :ensure t)
+
+(use-package enh-ruby-mode
   :ensure t)
 
 (use-package eyebrowse
