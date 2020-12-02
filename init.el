@@ -57,56 +57,42 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
 
-(use-package anaconda-mode
-  :ensure t)
+(use-package anaconda-mode :ensure t)
 
-(use-package auto-package-update
-  :ensure t
+(use-package auto-package-update :ensure t
   :config
   (setq auto-package-update-interval 1)
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results nil))
 
-(use-package circe
-  :ensure t)
+(use-package circe :ensure t)
 
-(use-package coffee-mode
-  :ensure t)
+(use-package coffee-mode :ensure t)
 
-(use-package company
-  :ensure t
+(use-package company :ensure t
   :config
   (global-company-mode t)
   (setq company-backends (delete 'company-semantic company-backends))
   (add-to-list 'company-backends #'company-omnisharp))
 
-(use-package csharp-mode
-  :ensure t)
+(use-package csharp-mode :ensure t)
 
-(use-package docker
-  :ensure t)
+(use-package docker :ensure t)
 
-(use-package docker-api
-  :ensure t)
+(use-package docker-api :ensure t)
 
-(use-package docker-cli
-  :ensure t)
+(use-package docker-cli :ensure t)
 
-(use-package docker-compose-mode
-  :ensure t)
+(use-package docker-compose-mode :ensure t)
 
-(use-package docker-tramp
-  :ensure t)
+(use-package docker-tramp :ensure t)
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-mode :ensure t)
 
-(use-package enh-ruby-mode
-  :ensure t)
+(use-package enh-ruby-mode :ensure t)
 
-(use-package eyebrowse
-  :ensure t
+(use-package eyebrowse :ensure t
   :config
   (global-set-key (kbd "<f9>")  'eyebrowse-switch-to-window-config-0)
   (global-set-key (kbd "<f10>") 'eyebrowse-switch-to-window-config-1)
@@ -115,8 +101,7 @@
   (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
 
-(use-package flycheck
-  :ensure t
+(use-package flycheck :ensure t
   :config
   (defun my/use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file
@@ -131,110 +116,85 @@
 
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
-(use-package geiser
-  :ensure t
+(use-package geiser :ensure t
   :config
   (setq geiser-default-implementation 'chicken)
   (setq geiser-mode-smart-tab-p t)
   (setq geiser-mode-start-repl-p t))
 
-(use-package ggtags
-  :ensure t
+(use-package ggtags :ensure t
   :config
   (add-hook 'c-mode-common-hook
             (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode)
                 (ggtags-mode 1)))))
 
-(use-package haml-mode
-  :ensure t)
+(use-package haml-mode :ensure t)
 
-(use-package helm-rb
-  :ensure t)
+(use-package helm-rb :ensure t)
 
-(use-package magit
-  :ensure t
+(use-package magit :ensure t
   :bind ("C-x g" . magit-status)
   :demand t)
 
-(use-package markdown-mode
-  :ensure t)
+(use-package markdown-mode :ensure t)
 
-(use-package markdown-mode+
-  :ensure t)
+(use-package markdown-mode+ :ensure t)
 
-(use-package markdown-preview-eww
-  :ensure t)
+(use-package markdown-preview-eww :ensure t)
 
-(use-package markup
-  :ensure t)
+(use-package markup :ensure t)
 
-(use-package markup-faces
-  :ensure t)
+(use-package markup-faces :ensure t)
 
-(use-package omnisharp
-  :ensure t
+(use-package omnisharp :ensure t
   :config
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   (add-hook 'csharp-mode-hook 'company-mode)
   (add-to-list 'company-backends 'company-omnisharp))
 
-(use-package php-mode
-  :ensure t)
+(use-package php-mode :ensure t)
 
-(use-package projectile
-  :ensure t
+(use-package projectile :ensure t
   :config
   (projectile-mode 1)
   ;; Workaround for bug in current projectile
   (setq projectile-project-compilation-cmd ""))
 
-(use-package projectile-rails
-  :ensure t)
+(use-package projectile-rails :ensure t)
 
-(use-package python-mode
-  :ensure t)
+(use-package python-mode :ensure t)
 
-(use-package rails-log-mode
-  :ensure t)
+(use-package rails-log-mode :ensure t)
 
-(use-package restclient
-  :ensure t)
+(use-package restclient :ensure t)
 
-(use-package robe
-  :ensure t
+(use-package robe :ensure t
   :config (add-hook 'ruby-mode-hook 'robe-mode)
           (add-hook 'enh-ruby-mode-hook 'robe-mode)
           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
             (rvm-activate-corresponding-ruby)))
 
-(use-package ruby-hash-syntax
-  :ensure t)
+(use-package ruby-hash-syntax :ensure t)
 
-(use-package rvm
-  :ensure t)
+(use-package rvm :ensure t)
 
-(use-package sr-speedbar
-  :ensure t
+(use-package sr-speedbar :ensure t
   :config
   (global-set-key [kp-6] 'sr-speedbar-toggle))
 
-(use-package string-inflection
-  :ensure t)
+(use-package string-inflection :ensure t)
 
-(use-package web-mode
-  :ensure t
+(use-package web-mode :ensure t
   :mode ("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")
   :config (progn
             (setq
              web-mode-content-types-alist
              '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))))
 
-(use-package yaml-mode
-  :ensure t)
+(use-package yaml-mode :ensure t)
 
-(use-package ztree
-  :ensure t)
+(use-package ztree :ensure t)
 
 (auto-package-update-maybe)
 (put 'narrow-to-region 'disabled nil)
