@@ -156,10 +156,11 @@
 (use-package php-mode :ensure t)
 
 (use-package projectile :ensure t
-  :config
-  (projectile-mode 1)
-  ;; Workaround for bug in current projectile
-  (setq projectile-project-compilation-cmd ""))
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("s-p" . projectile-command-map)
+              ("C-c p" . projectile-command-map)))
 
 (use-package projectile-rails :ensure t)
 
