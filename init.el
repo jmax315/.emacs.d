@@ -21,26 +21,30 @@
  '(auto-package-update-interval 1)
  '(auto-package-update-prompt-before-update t)
  '(compilation-scroll-output t)
- '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
+ '(explicit-bash-args '("--noediting" "-i" "-l"))
  '(geiser-implementations-alist
-   (quote
-    (((regexp "\\.scm$")   chicken)
-     ((regexp "\\.meta$")  chicken)
-     ((regexp "\\.setup$") chicken)
-     ((regexp "\\.page$")  chicken))))
+   '(((regexp "\\.scm$")
+      chicken)
+     ((regexp "\\.meta$")
+      chicken)
+     ((regexp "\\.setup$")
+      chicken)
+     ((regexp "\\.page$")
+      chicken)))
  '(global-linum-mode t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
  '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
  '(package-enable-at-startup nil)
+ '(package-selected-packages
+   '(enh-ruby-mode ztree web-mode use-package string-inflection sr-speedbar rvm ruby-hash-syntax robe restclient rails-log-mode python-mode projectile-rails php-mode omnisharp markup-faces markup markdown-preview-eww markdown-mode+ magit helm-rb haml-mode ggtags geiser eyebrowse dockerfile-mode docker-compose-mode docker-cli docker-api docker company coffee-mode circe auto-package-update anaconda-mode))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(ruby-insert-encoding-magic-comment nil)
- '(same-window-buffer-names (quote ("*shell*")))
+ '(same-window-buffer-names '("*shell*"))
  '(scheme-mit-dialect nil)
  '(scheme-program-name "csi")
  '(show-paren-mode t)
@@ -199,6 +203,7 @@
 (use-package robe
   :ensure t
   :config (add-hook 'ruby-mode-hook 'robe-mode)
+          (add-hook 'enh-ruby-mode-hook 'robe-mode)
           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
             (rvm-activate-corresponding-ruby)))
 
@@ -238,6 +243,9 @@
             (setq truncate-lines t)))
 
 (add-to-list 'auto-mode-alist '("\\.cspec\\'" . c-mode))
+
+(add-to-list 'auto-mode-alist
+             '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
 
 (add-to-list 'auto-mode-alist '("\\.page\\'" . scheme-mode))
 (add-hook 'scheme-mode-hook
