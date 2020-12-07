@@ -78,7 +78,8 @@
 
 (use-package csharp-mode :ensure t)
 
-(use-package docker :ensure t)
+(use-package docker :ensure t
+  :bind ("C-c d" . docker))
 
 (use-package docker-api :ensure t)
 
@@ -162,7 +163,8 @@
               ("s-p" . projectile-command-map)
               ("C-c p" . projectile-command-map)))
 
-(use-package projectile-rails :ensure t)
+(use-package projectile-rails :ensure t
+  :bind (:map projectile-rails-command-map ("C-c r")))
 
 (use-package python-mode :ensure t)
 
