@@ -219,6 +219,7 @@
             (font-lock-add-keywords
              nil
              '(("(\\(describe\\) " . font-lock-keyword-face)
+               ("(\\(context\\) " . font-lock-keyword-face)
                ("(\\(it\\) "       . font-lock-keyword-face)
                ("(\\(before\\) "   . font-lock-keyword-face)
                ("(\\(after\\) "    . font-lock-keyword-face)))))
