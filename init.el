@@ -117,6 +117,8 @@
 
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
+(use-package gcode-mode :ensure t)
+
 (use-package geiser :ensure t
   :config
   (setq geiser-default-implementation 'chicken)
