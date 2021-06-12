@@ -180,6 +180,10 @@
           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
             (rvm-activate-corresponding-ruby)))
 
+(use-package rspec-mode :ensure t
+  :config (add-hook 'dired-mode-hook 'rspec-dired-mode)
+          (setq rspec-use-rvm t))
+
 (use-package ruby-hash-syntax :ensure t)
 
 (use-package rvm :ensure t)
