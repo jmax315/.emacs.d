@@ -22,6 +22,7 @@
  '(auto-package-update-prompt-before-update t)
  '(compilation-scroll-output t)
  '(explicit-bash-args '("--noediting" "-i" "-l"))
+ '(geiser-active-implementations '(chicken))
  '(geiser-implementations-alist
    '(((regexp "\\.scm$")
       chicken)
@@ -32,6 +33,7 @@
      ((regexp "\\.page$")
       chicken)))
  '(global-linum-mode t)
+ '(gnus-secondary-select-methods '((nnmaildir "" (directory "~/.maildir"))))
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
@@ -42,6 +44,9 @@
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(ruby-insert-encoding-magic-comment nil)
+ '(safe-local-variable-values
+   '((geiser-chicken-binary . "/home/jmax/.dust/user/jmax/active/bin/csi")
+     (geiser-chicken--binary . "/home/jmax/.dust/user/jmax/active/bin/csi")))
  '(same-window-buffer-names '("*shell*"))
  '(scheme-mit-dialect nil)
  '(scheme-program-name "csi")
@@ -57,8 +62,10 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 143 :width normal)))))
 
+;; Python code navigation etc.
 (use-package anaconda-mode :ensure t)
 
+;; Package auto-updater
 (use-package auto-package-update :ensure t
   :config
   (setq auto-package-update-interval 1)
@@ -66,18 +73,20 @@
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results nil))
 
+;; IRC client
 (use-package circe :ensure t)
 
 (use-package coffee-mode :ensure t)
 
+;; Auto-completion
 (use-package company :ensure t
   :config
   (global-company-mode t)
-  (setq company-backends (delete 'company-semantic company-backends))
-  (add-to-list 'company-backends #'company-omnisharp))
+  (setq company-backends (delete 'company-semantic company-backends)))
 
-(use-package csharp-mode :ensure t)
+(use-package company-inf-ruby :ensure t)
 
+;; Docker  commands
 (use-package docker :ensure t
   :bind ("C-c d" . docker))
 
@@ -87,44 +96,45 @@
 
 (use-package docker-compose-mode :ensure t)
 
+;; Extend tramp to handle docker containers
 (use-package docker-tramp :ensure t)
 
 (use-package dockerfile-mode :ensure t)
 
 (use-package enh-ruby-mode :ensure t)
 
+;; workspace tool
 (use-package eyebrowse :ensure t
   :config
-  (global-set-key (kbd "<f9>")  'eyebrowse-switch-to-window-config-0)
-  (global-set-key (kbd "<f10>") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "<f11>") 'eyebrowse-switch-to-window-config-2)
-  (global-set-key (kbd "<f12>") 'eyebrowse-switch-to-window-config-3)
+  (global-set-key (kbd "<kp-4>") 'eyebrowse-switch-to-window-config-0)
+  (global-set-key (kbd "<kp-5>") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "<kp-6>") 'eyebrowse-switch-to-window-config-2)
   (setq eyebrowse-new-workspace t)
   (eyebrowse-mode t))
 
-(use-package flycheck :ensure t
-  :config
-  (defun my/use-eslint-from-node-modules ()
-    (let* ((root (locate-dominating-file
-                  (or (buffer-file-name) default-directory)
-                  "node_modules"))
-           (eslint
-            (and root
-                 (expand-file-name "node_modules/.bin/eslint"
-                                   root))))
-      (when (and eslint (file-executable-p eslint))
-        (setq-local flycheck-javascript-eslint-executable eslint))))
-
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
+(use-package flycheck :ensure t)
 
 (use-package gcode-mode :ensure t)
 
+;; inferior scheme package
 (use-package geiser :ensure t
   :config
   (setq geiser-default-implementation 'chicken)
   (setq geiser-mode-smart-tab-p t)
   (setq geiser-mode-start-repl-p t))
 
+(use-package geiser-chez :ensure t)
+(use-package geiser-chibi :ensure t)
+(use-package geiser-chicken :ensure t)
+(use-package geiser-gambit :ensure t)
+(use-package geiser-gauche :ensure t)
+(use-package geiser-guile :ensure t)
+(use-package geiser-kawa :ensure t)
+(use-package geiser-mit :ensure t)
+(use-package geiser-racket :ensure t)
+(use-package geiser-stklos :ensure t)
+
+;; tags package
 (use-package ggtags :ensure t
   :config
   (add-hook 'c-mode-common-hook
@@ -134,7 +144,16 @@
 
 (use-package haml-mode :ensure t)
 
+(use-package helm-rails :ensure t)
+
 (use-package helm-rb :ensure t)
+
+(use-package helm-rubygems-local :ensure t)
+
+(use-package helm-rubygems-org :ensure t)
+
+;; adds macro expansion to geiser
+(use-package macrostep-geiser :ensure t)
 
 (use-package magit :ensure t
   :bind ("C-x g" . magit-status)
@@ -150,12 +169,6 @@
 
 (use-package markup-faces :ensure t)
 
-(use-package omnisharp :ensure t
-  :config
-  (add-hook 'csharp-mode-hook 'omnisharp-mode)
-  (add-hook 'csharp-mode-hook 'company-mode)
-  (add-to-list 'company-backends 'company-omnisharp))
-
 (use-package php-mode :ensure t)
 
 (use-package projectile :ensure t
@@ -170,8 +183,7 @@
 
 (use-package python-mode :ensure t)
 
-(use-package rails-log-mode :ensure t)
-
+;;
 (use-package restclient :ensure t)
 
 (use-package robe :ensure t
@@ -185,6 +197,10 @@
           (setq rspec-use-rvm t))
 
 (use-package ruby-hash-syntax :ensure t)
+
+(use-package ruby-interpolation :ensure t)
+
+(use-package ruby-refactor :ensure t)
 
 (use-package rvm :ensure t)
 
