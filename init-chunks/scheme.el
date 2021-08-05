@@ -5,7 +5,10 @@
   :config
   (setq geiser-default-implementation 'chicken)
   (setq geiser-mode-smart-tab-p t)
-  (setq geiser-mode-start-repl-p t))
+  (setq geiser-mode-start-repl-p t)
+  (setq geiser-active-implementations '(chicken))
+  (setq geiser-implementations-alist '(((regexp "\\.scm$")
+                                        chicken))))
 
 (use-package geiser-chez :ensure t)
 (use-package geiser-chibi :ensure t)

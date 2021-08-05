@@ -1,5 +1,7 @@
 ;;; init chunk for ruby stuff
 
+(setq ruby-insert-encoding-magic-comment nil)
+
 (use-package company-inf-ruby :ensure t)
 
 (use-package enh-ruby-mode :ensure t)
@@ -20,8 +22,6 @@
           (add-hook 'enh-ruby-mode-hook 'robe-mode)
           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
             (rvm-activate-corresponding-ruby)))
-
-
 
 (use-package rspec-mode :ensure t
   :config (add-hook 'dired-mode-hook 'rspec-dired-mode)

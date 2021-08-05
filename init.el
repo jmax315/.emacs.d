@@ -1,7 +1,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" .        "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" .          "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" .   "https://elpa.gnu.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -18,42 +18,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(async-bytecomp-package-mode t)
- '(auto-package-update-interval 1)
- '(auto-package-update-prompt-before-update t)
  '(compilation-scroll-output t)
  '(explicit-bash-args '("--noediting" "-i" "-l"))
- '(geiser-active-implementations '(chicken))
- '(geiser-implementations-alist
-   '(((regexp "\\.scm$")
-      chicken)
-     ((regexp "\\.meta$")
-      chicken)
-     ((regexp "\\.setup$")
-      chicken)
-     ((regexp "\\.page$")
-      chicken)))
  '(global-linum-mode t)
  '(gnus-secondary-select-methods '((nnmaildir "" (directory "~/.maildir"))))
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
- '(package-archives
-   '(("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")))
  '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
- '(ruby-insert-encoding-magic-comment nil)
- '(safe-local-variable-values
-   '((geiser-chicken-binary . "/home/jmax/.dust/user/jmax/active/bin/csi")
-     (geiser-chicken--binary . "/home/jmax/.dust/user/jmax/active/bin/csi")))
  '(same-window-buffer-names '("*shell*"))
  '(scheme-mit-dialect nil)
  '(scheme-program-name "csi")
  '(show-paren-mode t)
- '(tab-width 4)
- '(tool-bar-mode nil)
- '(vc-svn-global-switches nil))
+ '(tab-width 2)
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
