@@ -28,6 +28,11 @@
  '(package-enable-at-startup nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(safe-local-variable-values
+   '((org-babel-load-languages
+      (ditaa . t)
+      (emacs-lisp)
+      (scheme . t))))
  '(same-window-buffer-names '("*shell*"))
  '(scheme-mit-dialect nil)
  '(scheme-program-name "csi")
@@ -53,22 +58,11 @@
 ;; IRC client
 (use-package circe :ensure t)
 
-(use-package coffee-mode :ensure t)
-
 ;; Auto-completion
 (use-package company :ensure t
   :config
   (global-company-mode t)
   (setq company-backends (delete 'company-semantic company-backends)))
-
-;; workspace tool
-(use-package eyebrowse :ensure t
-  :config
-  (global-set-key (kbd "<kp-4>") 'eyebrowse-switch-to-window-config-0)
-  (global-set-key (kbd "<kp-5>") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "<kp-6>") 'eyebrowse-switch-to-window-config-2)
-  (setq eyebrowse-new-workspace t)
-  (eyebrowse-mode t))
 
 (use-package flycheck :ensure t)
 
@@ -92,10 +86,6 @@
 (use-package python-mode :ensure t)
 
 (use-package restclient :ensure t)
-
-(use-package sr-speedbar :ensure t
-  :config
-  (global-set-key [kp-6] 'sr-speedbar-toggle))
 
 (use-package string-inflection :ensure t)
 
