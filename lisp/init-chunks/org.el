@@ -5,8 +5,10 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
-   (scheme . t)))
+ '((ditaa . t)
+	 (forth . t)
+	 (emacs-lisp . t)
+	 (scheme . t)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)

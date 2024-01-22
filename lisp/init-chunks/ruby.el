@@ -15,7 +15,9 @@
 (use-package helm-rubygems-org :ensure t)
 
 (use-package projectile-rails :ensure t
-  :bind (:map projectile-rails-command-map ("C-c r")))
+  :bind (:map projectile-rails-mode-map
+							("s-r" . projectile-rails-command-map)
+              ("C-c r" . projectile-rails-command-map)))
 
 (use-package robe :ensure t
   :config (add-hook 'ruby-mode-hook 'robe-mode)
@@ -24,14 +26,10 @@
             (rvm-activate-corresponding-ruby)))
 
 (use-package rspec-mode :ensure t
-  :config (add-hook 'dired-mode-hook 'rspec-dired-mode)
-          (setq rspec-use-rvm t))
+  :config (add-hook 'dired-mode-hook 'rspec-dired-mode))
 
 (use-package ruby-hash-syntax :ensure t)
 
 (use-package ruby-interpolation :ensure t)
 
 (use-package ruby-refactor :ensure t)
-
-(use-package rvm :ensure t)
-

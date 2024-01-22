@@ -5,3 +5,8 @@ elpa
 /projectile-bookmarks.eld
 transient/**
 /projectile.cache
+/.cache/
+/bookmarks
+/session.*
+/tramp
+/url/
